@@ -23,7 +23,7 @@ public:
 protected:
 	Vector2i position;
 	Vector2f velocity;
-	int speed = 3;
+	float speed{};
 
 	SDL_Rect currentFrame;
 	SDL_Texture* texture;
