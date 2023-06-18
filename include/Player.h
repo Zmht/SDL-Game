@@ -8,5 +8,6 @@ public:
 	
 private:
 	const char* name;
+	bool keyDown[4];
 };
 

@@ -3,6 +3,8 @@
 
 #include <SDL.h>
 
+
+
 bool Keyboard::getKeyState(SDL_Keycode key)
 {
 	bool isDown = false;

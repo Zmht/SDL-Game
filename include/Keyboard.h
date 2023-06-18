@@ -5,5 +5,6 @@ class Keyboard
 {
 public:
 	static bool getKeyState(SDL_Keycode key);
+private:
 };
 
