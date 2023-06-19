@@ -16,7 +16,8 @@ public:
 	Vector2f getVelocity();
 	SDL_Rect getCurrentFrame();
 
-	virtual void update() {};
+	virtual void update();
+	void clamp(int& var, int min, int max);
 	void TransformVelocity(float x, float y);
 	void TransformPosition(int x, int y);
 

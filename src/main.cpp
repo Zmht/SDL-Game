@@ -13,13 +13,16 @@
 
 Game* game = nullptr;
 
-const int SCRN_WIDTH = 640;
-const int SCRN_HEIGHT = 480;
-
 int main(int argc, char* args[])
 {
+	const int FPS = 60;
+	const int frameDelay = 1000 / FPS;
+
+	Uint32 frameStart;
+	int frameTime;
+
 	game = new Game();
-	game->init("Zach's Game", SCRN_WIDTH, SCRN_HEIGHT);
+	game->init("Zach's Game", Game::SCRN_WIDTH, Game::SCRN_HEIGHT);
 
 
 	SDL_Texture* tex = game->loadTexture("res/bozo.png");
@@ -28,12 +31,21 @@ int main(int argc, char* args[])
 
 	while (game->running())
 	{
+		frameStart = SDL_GetTicks();
+		
 		game->handleEvents();
 		
 		for (std::unique_ptr<GameObject>& ob : objects)
 		{
 			game->update(ob);
 			game->render(ob);
+		}
+
+		frameTime = SDL_GetTicks() - frameStart;
+
+		if (frameDelay > frameTime)
+		{
+			SDL_Delay(frameDelay - frameTime);
 		}
 	}
 	game->close();

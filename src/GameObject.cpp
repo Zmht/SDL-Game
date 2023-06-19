@@ -32,6 +32,22 @@ SDL_Rect GameObject::getCurrentFrame()
 	return currentFrame;
 }
 
+void GameObject::update()
+{
+	position.x += velocity.x * speed;
+	position.y += velocity.y * speed;
+}
+
+void GameObject::clamp(int& var, int min, int max)
+{
+	if (var <= min)
+		var = min;
+	else if (var >= max)
+		var = max;
+	else
+		var = var;
+}
+
 void GameObject::TransformVelocity(float x, float y)
 {
 	velocity.x = x;

@@ -18,9 +18,11 @@ public:
 
 	static SDL_Event event;
 	SDL_Texture* loadTexture(const char* filePath);
+
+	static constexpr int SCRN_WIDTH = 640;
+	static constexpr int SCRN_HEIGHT = 480;
 private:
 	
-
 	bool isRunning;
 
 	SDL_Window* window;
