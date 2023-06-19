@@ -12,6 +12,7 @@ public:
 	void init(const char* title, int width, int height);
 	void handleEvents();
 	void update(std::unique_ptr<GameObject>& obj);
+	void clear();
 	void render(std::unique_ptr<GameObject>& obj);
 	void close();
 	bool running();

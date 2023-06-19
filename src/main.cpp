@@ -2,6 +2,7 @@
 #include "Vector2f.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Background.h"
 
 #include <SDL.h>
 
@@ -25,15 +26,20 @@ int main(int argc, char* args[])
 	game->init("Zach's Game", Game::SCRN_WIDTH, Game::SCRN_HEIGHT);
 
 
-	SDL_Texture* tex = game->loadTexture("res/bozo.png");
+	SDL_Texture* p1 = game->loadTexture("res/png/robot_jasper.png");
+	SDL_Texture* background = game->loadTexture("res/png/test_background.png");
+
 	std::vector<std::unique_ptr<GameObject>> objects;
-	objects.push_back(std::make_unique<Player>(Vector2i(640/2, 480/2), tex, "test"));
+	objects.push_back(std::make_unique<Background>(background));
+	objects.push_back(std::make_unique<Player>(Vector2i(640/2, 480/2), p1, "test"));
+
 
 	while (game->running())
 	{
 		frameStart = SDL_GetTicks();
 		
 		game->handleEvents();
+		game->clear();
 		
 		for (std::unique_ptr<GameObject>& ob : objects)
 		{

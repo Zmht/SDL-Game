@@ -62,6 +62,11 @@ void Game::handleEvents()
 	}
 }
 
+void Game::clear()
+{
+	SDL_RenderClear(renderer);
+}
+
 void Game::update(std::unique_ptr<GameObject>& obj)
 {
 	obj->update();
@@ -69,8 +74,6 @@ void Game::update(std::unique_ptr<GameObject>& obj)
 
 void Game::render(std::unique_ptr<GameObject>& obj)
 {
-	SDL_RenderClear(renderer);
-
 	SDL_Rect src;
 	src = obj->getCurrentFrame();
 	SDL_Rect dst;
